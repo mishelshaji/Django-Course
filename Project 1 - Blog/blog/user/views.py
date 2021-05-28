@@ -10,6 +10,3 @@ def about(request):
 
 def contact(request):
     return render(request, 'user/contact.html')
-
-def details(request, id):
-    return render(request, 'user/details.html')
