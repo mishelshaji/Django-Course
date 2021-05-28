@@ -13,6 +13,8 @@
  
         {% for i in data %}
             <li>{{ i }}</li>
+        {% empty %}
+            <p>No data</p>
         {% endfor %}
         
     </ul>
