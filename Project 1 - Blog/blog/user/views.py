@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def home(request):
-    context = {'message': 'A message from View'}
+    context = {'data': ['Python', 'PHP', 'Java']}
     return render(request, 'user/home.html', context)
 
 def about(request):

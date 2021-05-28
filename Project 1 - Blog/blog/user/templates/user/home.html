@@ -9,12 +9,12 @@
 <body>
     <h1 style="text-align: center;">Welcome</h1>
 
-    <!-- <h2>{{ message }}</h2> -->
-
-    
-    {% comment %}
-        <h2>{{ message }}</h2>
-    {% endcomment %}
+    <ul>
+ 
+        {% for i in data %}
+            <li>{{ i }}</li>
+        {% endfor %}
         
+    </ul>
 </body>
 </html>
