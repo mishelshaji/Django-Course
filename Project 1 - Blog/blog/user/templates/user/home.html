@@ -9,14 +9,13 @@
 <body>
     <h1 style="text-align: center;">Welcome</h1>
 
-    <ul>
- 
-        {% for i in data %}
-            <li>{{ i }}</li>
-        {% empty %}
-            <p>No data</p>
-        {% endfor %}
+    
+    {% if age <= 18 %}
+        <p>Less than 18</p>
+    {% else %}
+        <p>Greater than 18</p>
+    {% endif %}
         
-    </ul>
+        
 </body>
 </html>
