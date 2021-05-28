@@ -9,13 +9,6 @@
 <body>
     <h1 style="text-align: center;">Welcome</h1>
 
-    
-    {% if age <= 18 %}
-        <p>Less than 18</p>
-    {% else %}
-        <p>Greater than 18</p>
-    {% endif %}
-        
-        
+    <h3>{{ data|slice:":2" }}</h3>
 </body>
 </html>

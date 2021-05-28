@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def home(request):
-    context = {'data': True, 'age': 25}
+    context = {'data': [1, 3, 5, 6]}
     return render(request, 'user/home.html', context)
 
 def about(request):
