@@ -1,0 +1,35 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-info mt-5">New Category</h1>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="color">Color</label>
+            <input type="color" name="color" id="color" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-primary">Back To List</button>
+            </div>
+            <div class="col-6">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Save Category</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock content %}
