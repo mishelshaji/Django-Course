@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.http.response import HttpResponseNotFound
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import *
 from .forms import *
 
@@ -26,7 +27,8 @@ def list_category(request):
     return render(request, 'administrator/category/list.html', context)
 
 def update_category(request, id):
-    category = Category.objects.get(id=id)
+    category = get_object_or_404(Category, id=id)
+
     if request.method == 'GET':
         context = {}
         context['form'] = CategoryForm(instance=category)

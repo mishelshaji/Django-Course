@@ -9,6 +9,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Color</th>
+                <th>Action</th>
             </tr>
             
             {% for i in data %}
@@ -16,6 +17,9 @@
                 <td>{{ i.name }}</td>
                 <td>{{ i.description }}</td>
                 <td><span style="color: {{ i.color }}">{{ i.color }}</span></td>
+                <td>
+                    <a href="{% url 'admin_update_category' id=i.id %}">Edit</a>
+                </td>
             </tr>
             {% endfor %}
                 
