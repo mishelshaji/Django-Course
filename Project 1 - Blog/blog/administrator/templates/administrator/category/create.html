@@ -49,7 +49,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <button class="btn btn-primary">Back To List</button>
+                <a href="{% url 'admin_list_category' %}" class="btn btn-primary">Back To List</a>
             </div>
             <div class="col-6">
                 {% csrf_token %}

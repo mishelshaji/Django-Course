@@ -1,5 +1,5 @@
 from django.http.response import HttpResponseNotFound
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import *
 from .forms import *
 
@@ -42,3 +42,8 @@ def update_category(request, id):
             context = {}
             context['form'] = form
             return render(request, 'administrator/category/update.html', context)
+
+def delete_category(request, id):
+    category = get_object_or_404(Category, id=id)
+    category.delete()
+    return redirect('admin_list_category')

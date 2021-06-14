@@ -18,7 +18,9 @@
                 <td>{{ i.description }}</td>
                 <td><span style="color: {{ i.color }}">{{ i.color }}</span></td>
                 <td>
-                    <a href="{% url 'admin_update_category' id=i.id %}">Edit</a>
+                    <a href="{% url 'admin_update_category' id=i.id %}">Edit</a> / 
+                    <a href="{% url 'admin_delete_category' id=i.id %}" onclick="return confirm('Do you want to delete this item?')">Delete</a>
+                    
                 </td>
             </tr>
             {% endfor %}
