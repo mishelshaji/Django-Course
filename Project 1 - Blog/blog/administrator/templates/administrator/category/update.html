@@ -1,0 +1,62 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-info mt-5">Update Category</h1>
+
+    <form method="POST">
+        <div class="row">
+            <div class="col">
+                {{ form.name.label }}
+                {{ form.name }} 
+                
+                {% if form.name.errors %}
+                    <div class="text-danger">           
+                        {% for e in form.name.errors %}
+                            <p>{{ e }}</p>
+                        {% endfor %}                   
+                    </div>
+                {% endif %}
+                                 
+            </div>
+            <div class="col">
+                {{ form.color.label }}
+                {{ form.color }}
+                
+                {% if form.color.errors %}
+                <div class="text-danger">           
+                    {% for e in form.color.errors %}
+                        <p>{{ e }}</p>
+                    {% endfor %}                   
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group mt-3">
+                    {{ form.description.label }}
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                    <div class="text-danger">           
+                        {% for e in form.description.errors %}
+                            <p>{{ e }}</p>
+                        {% endfor %}                   
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-primary">Back To List</button>
+            </div>
+            <div class="col-6">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock content %}

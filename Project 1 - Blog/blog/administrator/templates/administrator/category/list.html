@@ -1,0 +1,25 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1 class="text-center">Category List</h1>
+    
+    <div class="container">
+        <table class="table border table-striped table-hover mt-5">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Color</th>
+            </tr>
+            
+            {% for i in data %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.description }}</td>
+                <td><span style="color: {{ i.color }}">{{ i.color }}</span></td>
+            </tr>
+            {% endfor %}
+                
+        </table>
+    </div>
+{% endblock content %}
+    
