@@ -17,3 +17,34 @@ class CategoryForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'type': 'color'}
             ),
         }
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
+        widgets = {
+            'title': forms.TextInput(
+                attrs={'class': 'form-control'}
+            ),
+            'slug': forms.TextInput(
+                attrs={'class': 'form-control'}
+            ),
+            'description': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': '3'}
+            ),
+            'featured_image': forms.FileInput(
+                attrs={'class': 'form-control'}
+            ),
+            'featured_image': forms.Select(
+                attrs={'class': 'form-control'}
+            ),
+            'body': forms.Textarea(
+                attrs={'class': 'form-control'}
+            ),
+            'published_on': forms.DateTimeInput(
+                attrs={'class': 'form-control'}
+            ),
+            'status': forms.Select(
+                attrs={'class': 'form-control'}
+            ),
+        }

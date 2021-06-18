@@ -1,0 +1,17 @@
+
+{% if messages %}
+    <script>
+        toastr.options.closeButton = true;
+        toastr.options.progressBar = true;
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                toastr.success("{{ message }}", "Success");
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                toastr.error("{{ message }}", "Error");
+            {% else %}
+                toastr.info("{{ message }}", "Info");
+            {% endif %}
+        {% endfor %}  
+    </script>
+{% endif %}
+    

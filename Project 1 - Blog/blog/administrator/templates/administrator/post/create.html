@@ -1,0 +1,21 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-info mt-5">New Post</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.as_p }}
+        <div class="row">
+            <div class="col-6">
+                <a href="{% url 'admin_list_category' %}" class="btn btn-primary">Back To List</a>
+            </div>
+            <div class="col-6">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Save Post</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock content %}

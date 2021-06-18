@@ -2,6 +2,8 @@ from django.http.response import HttpResponseNotFound
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import *
 from .forms import *
+from django.contrib import messages
+from django.views.generic import CreateView
 
 # Create your views here.
 def create_category(request):
@@ -14,7 +16,8 @@ def create_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("Data Saved")
+            messages.success(request, "New Category Created")
+            return redirect('admin_list_category')
         else:
             context = {}
             context['form'] = form
@@ -32,12 +35,13 @@ def update_category(request, id):
     if request.method == 'GET':
         context = {}
         context['form'] = CategoryForm(instance=category)
-        return render(request, 'administrator/category/update.html', context)
+        return render(request, 'administrator/category/update.html', context)         
     else:
         form = CategoryForm(data=request.POST, instance=category)
         if form.is_valid():
             form.save()
-            return HttpResponse("Data Saved")
+            messages.success(request, "Category updated")
+            return redirect('admin_list_category')
         else:
             context = {}
             context['form'] = form
@@ -46,4 +50,12 @@ def update_category(request, id):
 def delete_category(request, id):
     category = get_object_or_404(Category, id=id)
     category.delete()
+    messages.success(request, "Category deleted")
     return redirect('admin_list_category')
+
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = "administrator/post/create.html"
+    success_url = '/'
+    form_class = PostForm
