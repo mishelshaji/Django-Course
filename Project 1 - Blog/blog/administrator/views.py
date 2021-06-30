@@ -3,7 +3,8 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import *
 from .forms import *
 from django.contrib import messages
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.urls import reverse, reverse_lazy
 
 # Create your views here.
 def create_category(request):
@@ -57,10 +58,26 @@ def delete_category(request, id):
 class PostCreateView(CreateView):
     model = Post
     template_name = "administrator/post/create.html"
-    success_url = '/'
+    success_url = reverse_lazy('admin_list_post')
     form_class = PostForm
 
 class PostListView(ListView):
     model = Post
     template_name = "administrator/post/list.html"
     context_object_name = 'data'
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = "administrator/post/update.html"
+    pk_url_kwarg = 'id'
+    form_class = PostForm
+    # success_url = reverse_lazy('admin_list_post')
+
+    def get_success_url(self):
+        return reverse('admin_list_post')
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = "administrator/post/delete.html"
+    pk_url_kwarg = 'id'
+    success_url = reverse_lazy('admin_list_post')

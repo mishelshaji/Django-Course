@@ -1,0 +1,13 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1 class="text-center">Delete Post</h1>
+    <div class="container">
+        <p>Do you want to delete <b>{{ object.title }}</b>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete Post</button>
+        </form>
+    </div>
+{% endblock content %}
+    
