@@ -1,5 +1,9 @@
 {% extends 'shared/base.html' %}
 
+{% block header %}
+    {% include 'shared/trumbowyg/css.html' %}
+{% endblock header %}
+    
 {% block content %}
 <div class="container">
     <h1 class="text-center text-info mt-5">New Post</h1>
@@ -19,3 +23,7 @@
     </form>
 </div>
 {% endblock content %}
+
+{% block footer %}
+    {% include 'shared/trumbowyg/script.html' %}
+{% endblock footer %}
