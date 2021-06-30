@@ -7,6 +7,6 @@ urlpatterns = [
     path('category/update/<int:id>/', update_category, name="admin_update_category"),
     path('category/delete/<int:id>/', delete_category, name="admin_delete_category"),
 
-    path('post/create/', PostCreateView.as_view(), name="admin_create_post"),
-    
+    path('post/', PostListView.as_view(), name="admin_list_post"),
+    path('post/create/', PostCreateView.as_view(), name="admin_create_post"),   
 ]

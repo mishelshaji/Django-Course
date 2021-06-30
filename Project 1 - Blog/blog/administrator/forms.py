@@ -35,14 +35,14 @@ class PostForm(forms.ModelForm):
             'featured_image': forms.FileInput(
                 attrs={'class': 'form-control'}
             ),
-            'featured_image': forms.Select(
+            'category': forms.Select(
                 attrs={'class': 'form-control'}
             ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control'}
             ),
             'published_on': forms.DateTimeInput(
-                attrs={'class': 'form-control'}
+                attrs={'class': 'form-control', 'type': 'date'}
             ),
             'status': forms.Select(
                 attrs={'class': 'form-control'}

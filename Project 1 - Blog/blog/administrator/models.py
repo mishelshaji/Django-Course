@@ -56,7 +56,7 @@ class Post(models.Model):
         upload_to = 'posts'
     )
 
-    catgory = models.ForeignKey(
+    category = models.ForeignKey(
         to=Category,
         on_delete=models.CASCADE,
         verbose_name='Category'

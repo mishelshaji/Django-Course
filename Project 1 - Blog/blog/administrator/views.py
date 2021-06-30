@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import *
 from .forms import *
 from django.contrib import messages
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 # Create your views here.
 def create_category(request):
@@ -59,3 +59,8 @@ class PostCreateView(CreateView):
     template_name = "administrator/post/create.html"
     success_url = '/'
     form_class = PostForm
+
+class PostListView(ListView):
+    model = Post
+    template_name = "administrator/post/list.html"
+    context_object_name = 'data'
