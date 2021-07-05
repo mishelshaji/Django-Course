@@ -1,0 +1,25 @@
+{% extends 'shared/base.html' %}
+
+{% block header %}
+    <style>
+        #post_body img{
+            width: 100%;
+        }
+    </style>
+{% endblock header %}
+
+{% block content %}
+    <h1 class="text-center mt-5">{{ object.title }}</h1>
+    <div class="container">
+        <img src="{{ object.featured_image.url }}" alt="Image failed to load" class="img-fluid my-4">
+        <p>
+            <b>Published:</b> {{ object.published_on|timesince }} ago 
+            <b>Category:</b> {{ object.category.name }}
+        </p>
+        <article id="post_body">         
+            {% autoescape off %}
+                {{ object.body }}
+            {% endautoescape %}         
+        </article>
+    </div>
+{% endblock content %}

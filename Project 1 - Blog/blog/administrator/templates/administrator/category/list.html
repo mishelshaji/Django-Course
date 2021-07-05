@@ -11,7 +11,7 @@
                 <th>Action</th>
             </tr>
             
-            {% for i in data %}
+            {% for i in page_obj %}
             <tr>
                 <td>{{ i.name }}</td>
                 <td>{{ i.description }}</td>
@@ -25,6 +25,8 @@
             {% endfor %}
                 
         </table>
+
+        {% include 'shared/pagination.html' %}
     </div>
 {% endblock content %}
     

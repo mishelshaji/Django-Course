@@ -1,3 +1,4 @@
+from django.core import paginator
 from django.http.response import HttpResponseNotFound
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import *
@@ -5,6 +6,7 @@ from .forms import *
 from django.contrib import messages
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
+from django.core.paginator import Paginator
 
 # Create your views here.
 def create_category(request):
@@ -25,9 +27,13 @@ def create_category(request):
             return render(request, 'administrator/category/create.html', context)
 
 def list_category(request):
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('name')
     context = {}
-    context['data'] = categories
+
+    paginator = Paginator(categories, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context['page_obj'] = page_obj
     return render(request, 'administrator/category/list.html', context)
 
 def update_category(request, id):
@@ -65,6 +71,7 @@ class PostListView(ListView):
     model = Post
     template_name = "administrator/post/list.html"
     context_object_name = 'data'
+    paginate_by = 20
 
 class PostUpdateView(UpdateView):
     model = Post
