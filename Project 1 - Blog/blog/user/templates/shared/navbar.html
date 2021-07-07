@@ -1,5 +1,9 @@
+{% load static %}
+
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'user_home' %}">Navbar</a>
+    <a class="navbar-brand" href="{% url 'user_home' %}">
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,12 +13,20 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'user_home' %}">Home</a>
             </li>
+            
+            {% if not user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'user_about' %}">About</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'user_contact' %}">Contact</a>
             </li>
+            {% endif %}
+                
+            
+            {% if user.is_authenticated %}
+            
+            {% if user.is_superuser %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -22,6 +34,8 @@
                     <a class="dropdown-item" href="{% url 'admin_list_category' %}">List Category</a>
                 </div>
             </li>
+            {% endif %}
+                
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Post</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -29,6 +43,21 @@
                     <a class="dropdown-item" href="{% url 'admin_list_post' %}">List Post</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts_logout' %}">Logout</a>
+            </li>
+            {% endif %}
+                
+            
+            {% if not user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts_register' %}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts_login' %}">Login</a>
+            </li>
+            {% endif %}
+                
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">

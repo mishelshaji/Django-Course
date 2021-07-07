@@ -1,0 +1,33 @@
+{% extends 'shared/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h1 class="text-center">Login</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+                <form method="POST">
+                    <div class="form-group">
+                        <label>{{ form.username.label }}</label>
+                        {% render_field form.username class='form-control' %}
+                        <div class="text-danger">
+                            {{ form.username.errors.as_ul }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.password.label }}</label>
+                        {% render_field form.password class='form-control' %}
+                        <div class="text-danger">
+                            {{ form.password.errors.as_ul }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Enigma__2
+font link: https://www.fontsquirrel.com/fonts/Enigmatic
+font author: Objets Dart
+font author site: http://www.objetsdart.ca
+
+
+icon designer: Guillaume Beaulieu
+icon designer link: /ggggb9
+        
+{"bg":"#E8F4F0","icon-gradient-0":"#01695A","icon-gradient-1":"#2CC26F","font":"#04291D","slogan":"#183d31"}
+      
