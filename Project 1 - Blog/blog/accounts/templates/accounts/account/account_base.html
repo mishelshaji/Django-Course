@@ -1,0 +1,25 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="container">
+    <ul class="nav nav-tabs my-4">
+        <li class="nav-item">
+            {% url 'accounts_detail' as page %}
+            <a class="nav-link {% if request.path == page %}active{% endif %}" href="{{ page }}">Account</a>
+        </li>
+        <li class="nav-item">
+            {% url 'accounts_edit' as page %}
+            <a class="nav-link {% if request.path == page %}active{% endif %}" href="{% url 'accounts_edit' %}">Edit Details</a>
+        </li>
+        <li class="nav-item">
+            {% url 'accounts_change_password' as page %}
+            <a class="nav-link {% if request.path == page %}active{% endif %}" href="{% url 'accounts_change_password' %}">Change Password</a>
+        </li>
+    </ul>
+
+    {% block account_settings %}
+
+    {% endblock account_settings %}
+
+</div>
+{% endblock content %}

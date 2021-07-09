@@ -1,0 +1,13 @@
+{% extends 'accounts/account/account_base.html' %}
+
+{% block account_settings %}
+    <h1 class="text-center">Edit Details</h1>
+    <div class="container">
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+{% endblock account_settings %}
+    

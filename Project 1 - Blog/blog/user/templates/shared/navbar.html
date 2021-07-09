@@ -9,7 +9,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'user_home' %}">Home</a>
             </li>
@@ -45,6 +45,11 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'accounts_logout' %}">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts_detail' %}">
+                    Welcome <b class="text-success">{{ user.username }}!</b>
+                </a>
             </li>
             {% endif %}
                 

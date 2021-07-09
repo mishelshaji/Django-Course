@@ -2,6 +2,12 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.views.generic import TemplateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import get_user_model
+from .forms import *
+from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 def register(request):
@@ -45,3 +51,17 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('user_home')
+
+class UserDetailView(LoginRequiredMixin, TemplateView):
+    template_name = "accounts/account/detail.html"
+
+class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = get_user_model()
+    form_class = UserDetailForm
+    template_name = "accounts/account/edit.html"
+    success_url = reverse_lazy('accounts_detail')
+    success_message = "Profile Updated"
+
+    def get_object(self):
+        return self.request.user
+    

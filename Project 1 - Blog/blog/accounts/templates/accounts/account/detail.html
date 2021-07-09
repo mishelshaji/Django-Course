@@ -1,0 +1,26 @@
+{% extends 'accounts/account/account_base.html' %}
+
+{% block account_settings %}
+    <h1 class="text-center">Account Details</h1>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <td>First Name</td>
+                <td>{{ user.first_name }}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{ user.last_name }}</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock account_settings %}
+    
